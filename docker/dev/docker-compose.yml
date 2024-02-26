@@ -6,7 +6,7 @@ services:
       - altiscope-network
     tty: true
     build:
-      context: '../../altiscope-memo-app'
+      context: '../../src'
       dockerfile: Dockerfile
     ports:
       - 7002:7002
