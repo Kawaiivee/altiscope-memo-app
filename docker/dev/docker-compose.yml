@@ -9,9 +9,9 @@ services:
       context: '../../src'
       dockerfile: Dockerfile
     ports:
-      - 7002:7002
+      - 8900:8900
     environment:
-      - PORT=7002
+      - PORT=8900
 networks:
   altiscope-network:
     driver: bridge
