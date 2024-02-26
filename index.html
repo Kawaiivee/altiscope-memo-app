@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js Post-It Memo</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <style>
+    .memo {
+      width: 200px;
+      height: 200px;
+      background-color: #eebbc3;
+      padding: 10px;
+      margin: 10px;
+      float: left;
+      border-style:outset;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <input v-model="newMemo" placeholder="Write here">
+      <button @click="addMemo">Post it</button>
+    </div>
+    <div class="memo" v-for="(memo, index) in memos" :key="index">
+      <textarea v-model="memo.content" @input="saveMemos"></textarea>
+      <button @click="deleteMemo(index)">Delete</button>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        memos: [],
+        newMemo: ''
+      },
+      mounted() {
+        // Load memos from local storage when the app starts
+        const storedMemos = localStorage.getItem('memos');
+        if (storedMemos) {
+          this.memos = JSON.parse(storedMemos);
+        }
+      },
+      methods: {
+        addMemo() {
+          if (this.newMemo.trim() !== '') {
+            this.memos.push({ content: this.newMemo });
+            this.saveMemos();
+            this.newMemo = ''; // Clear the input field
+          }
+        },
+        deleteMemo(index) {
+          this.memos.splice(index, 1);
+          this.saveMemos();
+        },
+        saveMemos() {
+          // Save memos to local storage
+          localStorage.setItem('memos', JSON.stringify(this.memos));
+        }
+      }
+    });
+  </script>
+</body>
+</html>
