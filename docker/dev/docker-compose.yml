@@ -1,0 +1,17 @@
+version: '3'
+services:
+  altiscope-memo-app:
+    container_name: altiscope-memo-app
+    networks:
+      - altiscope-network
+    tty: true
+    build:
+      context: '../../altiscope-memo-app'
+      dockerfile: Dockerfile
+    ports:
+      - 7002:7002
+    environment:
+      - PORT=7002
+networks:
+  altiscope-network:
+    driver: bridge
