@@ -2,7 +2,7 @@
 FROM node:latest as build
 
 # Working directory
-WORKDIR /s
+WORKDIR /src
 
 # Copy package.json and yarn.lock
 COPY . .
