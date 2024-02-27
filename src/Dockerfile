@@ -14,4 +14,4 @@ RUN yarn install
 COPY . .
 
 # Run development build
-CMD ["npx", "http-server", "-o", "--cors", "-a", "127.0.0.1", "-p", "8900"]
+CMD ["npx", "http-server", "-o", "--cors", "-a", "localhost", "-p", "8900"]
