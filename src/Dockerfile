@@ -8,7 +8,7 @@ WORKDIR /src
 COPY . .
 
 # Install dependencies
-RUN yarn install
+RUN yarn global add http-server
 
 # Copy the rest of the application code
 COPY . .
