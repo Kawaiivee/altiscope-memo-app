@@ -14,4 +14,4 @@ RUN yarn global add http-server
 COPY . .
 
 # Run development build
-CMD ["npx", "http-server", "-o", "--cors", "-a", "localhost", "-p", "8900"]
+CMD ["npx", "http-server", "-o", "--cors", "-a", "localhost", "-p", "8902"]
