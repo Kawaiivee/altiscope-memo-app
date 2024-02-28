@@ -8,6 +8,8 @@ services:
     build:
       context: '../../src'
       dockerfile: Dockerfile
+    expose:
+      - 8902
     ports:
       - 8902:8902
     environment:
