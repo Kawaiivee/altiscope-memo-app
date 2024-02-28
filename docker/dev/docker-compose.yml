@@ -15,6 +15,7 @@ services:
     volumes:
       - "../../src:/usr/share/nginx/html"
       - "./nginx.conf:/etc/nginx/nginx.conf"
+    command: /bin/sh -c "exec nginx -g 'daemon off;'"
 networks:
   altiscope-network:
     driver: bridge
