@@ -1,19 +1,20 @@
 version: '3'
 services:
-  altiscope-memo-app:
-    container_name: altiscope-memo-app
+  altiscope-memo-app-nginx:
+    container_name: altiscope-memo-app-nginx
+    tty: true
     networks:
       - altiscope-network
-    tty: true
-    build:
-      context: '../../src'
-      dockerfile: Dockerfile
+    image: nginx:latest
     expose:
       - 8902
     ports:
-      - 8902:8902
+      - "8902:80"
     environment:
       - PORT=8902
+    volumes:
+      - "../../src:/usr/share/nginx/html"
+      - "./nginx.conf:/etc/nginx/nginx.conf"
 networks:
   altiscope-network:
     driver: bridge
