@@ -4,7 +4,7 @@ services:
     container_name: altiscope-memo-app-nginx
     tty: true
     networks:
-      - altiscope-network
+      - friend-network
     image: nginx:latest
     expose:
       - 8902
@@ -17,5 +17,5 @@ services:
       - "./nginx.conf:/etc/nginx/nginx.conf"
     command: /bin/sh -c "exec nginx -g 'daemon off;'"
 networks:
-  altiscope-network:
+  friend-network:
     driver: bridge
